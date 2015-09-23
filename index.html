@@ -36,6 +36,12 @@
 
 <p>This contains a few useful examples to use the Saffron REST API and Thought Processes</p>
       </section>
+      
+      <section>
+        Bookmarklet to run a THOP and transform the result into a CSV file.
+        Drag <a href="javascript:(function(){%20var%20json%20=%20JSON.parse(document.getElementsByTagName('pre')[0].innerText);%20var%20result%20=%20JSON.parse(json.result);%20document.getElementsByTagName('BODY')[0].appendChild(document.createTextNode("Result%20to%20convert:%20"%20+%20JSON.stringify(result,%20null,%202)));%20convertToCSV(result.result,'result',%20true);%20function%20convertToCSV(jsonData,%20title,%20includeHeader)%20{%20var%20arrData%20=%20typeof%20jsonData%20!=%20'object'%20?%20JSON.parse(jsonData)%20:%20jsonData;%20var%20CSV%20=%20%22%22;%20if%20(includeHeader)%20{%20CSV%20+=%20Object.keys(arrData[0]).map(function(k){%20return%20'%22'%20+%20k.split('%22').join('%22%22')%20+%20'%22'}).join(',')%20+%20'\r\n';%20}%20var%20rows%20=%20arrData.map(function(row){%20return%20Object.keys(row).map(function(k){%20return%20row[k].toString().indexOf('%22')%20%3E%200%20?%20'%22'%20+%20row[k].split('%22').join('%22%22')%20+%20'%22'%20:%20row[k]})%20.join(',');%20}).join('\r\n');%20CSV%20+=%20rows%20+%20'\r\n';%20var%20fileName%20=%20title.replace(/%20/g,%22_%22);%20var%20uri%20=%20'data:text/csv;charset=utf-8,'%20+%20encodeURIComponent(CSV);%20var%20link%20=%20document.createElement(%22a%22);%20link.href%20=%20uri;%20link.style%20=%20%22visibility:hidden%22;%20link.download%20=%20fileName%20+%20%22.csv%22;%20document.body.appendChild(link);%20link.click();%20document.body.removeChild(link);%20}%20})();">
+        this</a> to your bookmarks.
+      </section>
     </div>
 
     <!-- FOOTER  -->
